@@ -1,1 +1,1 @@
-A new website.
+This is a simple website I have created for myself and a group of friends.  I will be slowly adding more functionality to it in time.
