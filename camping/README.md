@@ -7,7 +7,10 @@ Here is the basic structure for the project.  This was built using Maven 3.5.3. 
 
 ## Assumptions
 - A valid json object will be passed in that follows the structure noted in the project
+- The reservations in the json object are valid
 - Valid dates are also passed in
+- CampSite ids are ints
+- There is at least one campsite that is available (to correct)
 
 ## Instructions
 * Use provided JAR file and move to a directory where it can be ran.
@@ -24,3 +27,10 @@ Here is the basic structure for the project.  This was built using Maven 3.5.3. 
 
 	* java -cp [nameOfJarFile] [locationOfMainMethod] [relativePath to JsonFile]
 
+## High Level Explanation
+
+- This project is designed to take in a Json file that has dates, start and end, for a pending reservation.  The file also includes campsites, which have ids and names, and a list of current reservations on the books, which have the campsite id and start/end date.  It used that file to determine which campsites are open to the reservation dates and prints off the campsite names.
+
+- Here is the high level description for each of the class: 
+- mor
+- more
