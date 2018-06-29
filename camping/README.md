@@ -25,7 +25,7 @@ Here is the basic structure for the project.  This was built using Maven 3.5.3. 
 
 * The structure of the command is:
 
-	* java -cp [nameOfJarFile] [locationOfMainMethod] [relativePath to JsonFile]
+	* java -cp [nameOfJarFile] [locationOfMainMethod] [relativePath to JsonFile/JsonFileName]
 
 ## High Level Explanation
 
