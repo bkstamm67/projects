@@ -10,7 +10,6 @@ Here is the basic structure for the project.  This was built using Maven 3.5.3. 
 - The reservations in the json object are valid
 - Valid dates are also passed in
 - CampSite ids are ints
-- There is at least one campsite that is available (to correct)
 - There are some methods within the classes which are not used - like toString and equals methods.  This was just used for testing and left in.
 
 ## Instructions
@@ -54,3 +53,11 @@ Here is the basic structure for the project.  This was built using Maven 3.5.3. 
 
 * Search
 	* From the json object which is the start and end date used for the pending reservation.
+
+## Edits to make project better
+
+* I would add in more error checking - i.e. I would add some checking that the json object was valid as were the values supplied.  
+
+* With error checking, I would add more elegant way of handling those errors and communicate that to user.
+
+* More testing for the Driver, including various date permunations.
