@@ -51,6 +51,4 @@ public class Search {
 		return "Search [startDate=" + startDate.toString() + ", endDate=" + endDate.toString() + "]";
 	}
 	
-	
-
 }

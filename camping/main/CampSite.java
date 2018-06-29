@@ -1,10 +1,19 @@
 package com.campspot.app;
 
+/**
+ * Mirrors json object of campsites
+ * @author Brian Stamm
+ */
 public class CampSite {
 	
 	private int id;
 	private String name;
 	
+	/**
+	 * Constructor
+	 * @param name name of campsite
+	 * @param id id of campsite
+	 */
 	public CampSite(String name, int id) {
 		this.name = name;
 		this.id = id;
