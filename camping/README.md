@@ -11,6 +11,7 @@ Here is the basic structure for the project.  This was built using Maven 3.5.3. 
 - Valid dates are also passed in
 - CampSite ids are ints
 - There is at least one campsite that is available (to correct)
+- There are some methods within the classes which are not used - like toString and equals methods.  This was just used for testing and left in.
 
 ## Instructions
 * Use provided JAR file and move to a directory where it can be ran.
@@ -32,5 +33,18 @@ Here is the basic structure for the project.  This was built using Maven 3.5.3. 
 - This project is designed to take in a Json file that has dates, start and end, for a pending reservation.  The file also includes campsites, which have ids and names, and a list of current reservations on the books, which have the campsite id and start/end date.  It used that file to determine which campsites are open to the reservation dates and prints off the campsite names.
 
 - Here is the high level description for each of the class: 
-- mor
-- more
+
+* App
+	* This is the class which contains the main method.  It is used primarily to read in the json file.  The json object is passed to the CampSiteSearch class using GSON to do the serialization.  It then passes the CampSiteSearch to the Driver class, which completes the objective of the project.
+
+* CampSiteSearch
+	* This class allows GSON to serialize the information in the json object.  The object also has the method getCampGroundName(int id) which is used to search the list of CampSites and returns the name of the site.
+
+* CampSite
+	* This holds a String name and int id.
+
+* Reservations
+	* This object holds a campsite id, which references a specific CampSite object, a String StartDate, and a String EndDate.  
+
+* Search
+	* From the json object which is the start and end date used for the pending reservation.
