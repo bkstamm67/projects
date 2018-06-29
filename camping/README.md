@@ -37,6 +37,12 @@ Here is the basic structure for the project.  This was built using Maven 3.5.3. 
 * App
 	* This is the class which contains the main method.  It is used primarily to read in the json file.  The json object is passed to the CampSiteSearch class using GSON to do the serialization.  It then passes the CampSiteSearch to the Driver class, which completes the objective of the project.
 
+* Driver
+	* This class does the heavy lifting for this project.  It takes the information from the CampSiteSearch class (which is the representation of the json object). From this, it parses out the needed information into smaller classes.  The primarily method is run().
+		* run() creates a hashMap that is used later to see which CampSites are available for the pending reservation.  At first, it is assumed that each campsite is available. It then goes through each reservation to see if the dates conflict with the pending reservation.  It uses the dateCheck() method to do this validation.  If it is not, its value in the hashMap is changed from being available to unavailable.  It then passes the hashMap to the buildResponse() method that creates a String response.  That is printed out to the screen.
+		* dateCheck() uses three helper methods to check if the pending reservation dates are valid based off the current reservation dates.  It first checks if start date is valid, then the end, and then makes sure the either date does not overlap with the current reservation.
+		* buildResponse() takes the hashMap and iterates through it.  If the key campId has a 'true' boolean value, it then gets the CampSite name and adds it to the answer. 
+
 * CampSiteSearch
 	* This class allows GSON to serialize the information in the json object.  The object also has the method getCampGroundName(int id) which is used to search the list of CampSites and returns the name of the site.
 
