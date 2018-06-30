@@ -59,5 +59,3 @@ Here is the basic structure for the project.  This was built using Maven 3.5.3. 
 * I would add in more error checking - i.e. I would add some checking that the json object was valid as were the values supplied.  
 
 * With error checking, I would add more elegant way of handling those errors and communicate that to user.
-
-* More testing for the Driver, including various date permunations.

@@ -21,12 +21,18 @@ public class DriverTest {
 	private LocalDate testEndDateLocalDate;
 	
 	List<Reservations> testListReservations;
-	private String testReservationOneStartDate = "2018-06-01";
-	private String testReservationOneEndDate = "2018-06-09";
-	private String testReservationTwoStartDate = "2018-05-03";
-	private String testReservationTwoEndDate = "2018-05-11";
-	private Reservations oneReservations;
-	private Reservations twoReservations;
+	private String testReservationGoodStartDate = "2018-06-01";
+	private String testReservationGoodEndDate = "2018-06-09";
+	private String testReservationOverLappingStartDate = "2018-05-03";
+	private String testReservationOverLappingEndDate = "2018-05-11";
+	private String testReservationGapBeforeStartDate = "2018-04-26";
+	private String testReservationGapBeforeEndDate = "2018-04-29";
+	private String testReservationGapAfterStartDate = "2018-05-06";
+	private String testReservationGapAfterEndDate = "2018-05-09";
+	private Reservations goodReservations;
+	private Reservations overLappingReservations;
+	private Reservations gapBeforeReservations;
+	private Reservations gapAfterReservations;
 	
 	List<CampSite> testListCampSite;
 	private CampSite firstCampSite;
@@ -43,10 +49,13 @@ public class DriverTest {
 		testSearch = new Search(testStartDate,testEndDate);
 		
 		testListReservations = new ArrayList<Reservations>();
-		oneReservations = new Reservations(firstId,testReservationOneStartDate,testReservationOneEndDate);
-		twoReservations = new Reservations(secondId,testReservationTwoStartDate,testReservationTwoEndDate);
-		testListReservations.add(oneReservations);
-		testListReservations.add(twoReservations);
+		goodReservations = new Reservations(firstId,testReservationGoodStartDate,testReservationGoodEndDate);
+		overLappingReservations = new Reservations(secondId,testReservationOverLappingStartDate,testReservationOverLappingEndDate);
+		gapBeforeReservations = new Reservations(firstId,testReservationGapBeforeStartDate,testReservationGapBeforeEndDate);
+		gapAfterReservations = new Reservations(secondId,testReservationGapAfterStartDate,testReservationGapAfterEndDate);
+		testListReservations.add(goodReservations);
+		testListReservations.add(overLappingReservations);
+		testListReservations.add(gapBeforeReservations);
 		
 		testListCampSite = new ArrayList<CampSite>();
 		firstCampSite = new CampSite(firstName,firstId);
@@ -63,12 +72,29 @@ public class DriverTest {
 	}
 	
 	@Test
-	public void testConstructor() {
+	public void testDateCheck_noConflict() {
 		testDriver = new Driver(campSiteSearch);
 		
-		assertEquals(testDriver.dateCheck(testStartDateLocalDate, testEndDateLocalDate, oneReservations),true);
-		assertEquals(testDriver.dateCheck(testStartDateLocalDate, testEndDateLocalDate, twoReservations),false);
+		assertEquals(testDriver.dateCheck(testStartDateLocalDate, testEndDateLocalDate, goodReservations),true);
+		
 	}
+	
+	@Test
+	public void testDateCheck_conflictOverlapping() {
+		testDriver = new Driver(campSiteSearch);
+		
+		assertEquals(testDriver.dateCheck(testStartDateLocalDate, testEndDateLocalDate, overLappingReservations),false);
+	}
+	
+	@Test
+	public void testDateCheck_conflictGapDay() {
+		testDriver = new Driver(campSiteSearch);
+		
+		assertEquals(testDriver.dateCheck(testStartDateLocalDate, testEndDateLocalDate, gapBeforeReservations),false);
+		assertEquals(testDriver.dateCheck(testStartDateLocalDate, testEndDateLocalDate, gapAfterReservations),false);
+		
+	}
+	
 
 	
 }
